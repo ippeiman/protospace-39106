@@ -21,11 +21,9 @@ class PrototypesController < ApplicationController
   end
   
   def destroy
-    if @prototype.destroy
-      redirect_to root_path
-    else
-      redirect_to root_path
-    end
+    prototype = current_user.prototypes.find(params[:id])
+    prototype.destroy
+    redirect_to root_path
   end
   
   def show
